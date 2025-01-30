@@ -22,6 +22,7 @@ export class StudentsComponent implements OnInit {
     this.studentService.getStudent().subscribe (
       (successResponse)=>{
         console.log(successResponse);
+        console.log(successResponse);
       },
       (errorResponse)=>{
         console.log(errorResponse);

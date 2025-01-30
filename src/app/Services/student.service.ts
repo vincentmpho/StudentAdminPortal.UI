@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Student } from '../Models/Api-models/student.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class StudentService {
   private httpClient = inject(HttpClient);
 
   // Method to fetch student data
-  getStudent(): Observable<any> {
-    return this.httpClient.get<any>(this.baseApiUrl + '/Students');
+  getStudent(): Observable<Student[]> {
+    return this.httpClient.get<Student[]>(this.baseApiUrl + '/Students');
   }
 }
