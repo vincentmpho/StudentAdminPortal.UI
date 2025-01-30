@@ -6,18 +6,18 @@
 
 <div class="container">
   <div class="mt-1">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      
-      <!-- first Name Column -->
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+      <!-- First Name Column -->
       <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef> First Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell *matCellDef="let student"> {{ student.firstName }} </td>
       </ng-container>
-
-      <!-- last Name Column -->
+    
+      <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef> Last Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let student"> {{ student.lastName }} </td>
       </ng-container>
 
       <!-- date of Birth Column -->
