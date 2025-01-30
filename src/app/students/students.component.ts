@@ -1,30 +1,37 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StudentService } from '../Services/student.service';
-import { HttpClientModule } from '@angular/common/http';
+import { Student } from '../Models/Ui-models/student.model';
+import { MatTableDataSource } from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';  
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [],
-  templateUrl: './students.component.html',
+  imports: [MatTableModule,CommonModule ],
+   templateUrl: './students.component.html',
   styleUrl: './students.component.css'
 })
 export class StudentsComponent implements OnInit {
 
+  students: Student[] = [];
+  displayedColumns: string[] = ['firstName', 'lastName', 'dateofBith', 'email', 'phone', 'gender'];
 
+  // Define the data source
+  dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
 
+ // inject the service without needing a constructor
+  private studentService = inject(StudentService);
 
-  // inject the service without needing a constructor
-  private studentService = inject(StudentService);  
-  
   ngOnInit(): void {
-    //Ftch Students
-    this.studentService.getStudent().subscribe (
-      (successResponse)=>{
-        console.log(successResponse);
-        console.log(successResponse);
+    // Fetch Students
+    this.studentService.getStudent().subscribe(
+      (successResponse) => {
+        this.students = successResponse;
+        this.dataSource = new MatTableDataSource<Student>(this.students);  
       },
-      (errorResponse)=>{
+      (errorResponse) => {
         console.log(errorResponse);
       }
     );
