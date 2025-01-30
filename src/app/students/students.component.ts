@@ -6,11 +6,12 @@ import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatPaginatorModule, MatSortModule], 
+  imports: [MatTableModule, CommonModule, MatPaginatorModule, MatSortModule,FormsModule], 
   templateUrl: './students.component.html',
   styleUrl: './students.component.css'
 })
@@ -22,6 +23,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
     // Create a prop for the paginator
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort; 
+  filterString = '';
 
   // Define the data source
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
@@ -50,5 +52,9 @@ export class StudentsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.matPaginator;
     this.dataSource.sort = this.matSort;
+  }
+
+  filterStudents(){
+    this.dataSource.filter = this.filterString.trim().toLowerCase();
   }
 }
