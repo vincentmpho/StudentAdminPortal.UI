@@ -7,18 +7,20 @@ import { CommonModule } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatPaginatorModule, MatSortModule,FormsModule], 
+  imports: [MatTableModule, CommonModule, MatPaginatorModule, MatSortModule,FormsModule, MatIcon, RouterLink], 
   templateUrl: './students.component.html',
   styleUrl: './students.component.css'
 })
 export class StudentsComponent implements OnInit, AfterViewInit {
 
   students: Student[] = [];
-  displayedColumns: string[] = ['firstName', 'lastName', 'dateofBith', 'email', 'phone', 'gender'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'dateofBith', 'email', 'phone', 'gender','edit'];
 
     // Create a prop for the paginator
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
