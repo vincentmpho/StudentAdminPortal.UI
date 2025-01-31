@@ -15,7 +15,18 @@ export class StudentService {
   private httpClient = inject(HttpClient);
 
   // Method to fetch student data
-  getStudent(): Observable<Student[]> {
+  getStudents(): Observable<Student[]> {
     return this.httpClient.get<Student[]>(this.baseApiUrl + '/Students');
   }
+
+  //Mehod to fetch student details 
+
+  getStudent(studentId: string): Observable<Student> {
+    
+     //return this.httpClient.get<Student>(this.baseApiUrl + '/Students' +studentId );
+    return this.httpClient.get<Student>(`${this.baseApiUrl}/Students/${studentId}`);
+    
+    
+}
+
 }

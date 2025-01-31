@@ -33,7 +33,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // Fetch Students
-    this.studentService.getStudent().subscribe(
+    this.studentService.getStudents().subscribe(
       (successResponse) => {
         this.students = successResponse;
         this.dataSource.data = this.students; 
