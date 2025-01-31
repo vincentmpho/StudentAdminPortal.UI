@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { StudentsComponent } from './students/students.component';
+import { ViewStudentComponent } from './students/view-student/view-student.component';
 
 export const routes: Routes = [
 
@@ -13,5 +14,11 @@ export const routes: Routes = [
     //This route wil be used for the students page
     path: 'students', 
     component: StudentsComponent
+  },
+
+  {
+    path: 'students/:id',
+    component: ViewStudentComponent
   }
+
 ];
