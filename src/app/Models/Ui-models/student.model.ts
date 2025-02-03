@@ -9,7 +9,7 @@ export interface Student {
   email: string;
   phone: number;
   profileImageUrl: string;
-  gengerId: string;
+  genderId: string;
   gender: Gender;
   address: Address;
 }
